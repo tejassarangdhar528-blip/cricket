@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cricket Gear Store</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Arial,sans-serif;background:#f4f4f4}
+header{background:#0a7c3b;color:white;padding:20px 24px;display:flex;justify-content:space-between;align-items:center}
+header h2{font-size:20px;font-weight:bold}
+nav a{color:white;margin-left:20px;text-decoration:none;font-weight:bold;font-size:14px}
+nav a:hover{text-decoration:underline}
+.cart-bar{background:white;padding:10px 24px;display:flex;justify-content:flex-end;align-items:center;gap:8px;font-size:14px;color:#555;border-bottom:1px solid #ddd}
+.cart-count{background:#0a7c3b;color:white;border-radius:50%;width:22px;height:22px;display:inline-flex;align-items:center;justify-content:center;font-size:12px;font-weight:bold}
+.hero{background:linear-gradient(rgba(0,80,30,0.7),rgba(0,50,20,0.8)),url('https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?w=1200');background-size:cover;background-position:center;color:white;text-align:center;padding:100px 20px}
+.hero h1{font-size:48px;font-weight:bold;margin-bottom:12px}
+.hero p{font-size:18px;opacity:0.9}
+.products{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px;padding:40px;background:#f4f4f4}
+.product{background:white;padding:20px;border-radius:10px;text-align:center;box-shadow:0 4px 10px rgba(0,0,0,0.1)}
+.product img{width:100%;height:200px;object-fit:cover;border-radius:10px;margin-bottom:12px}
+.product h3{font-size:16px;margin-bottom:8px}
+.price{font-size:20px;font-weight:bold;color:#0a7c3b;display:block;margin-bottom:10px}
+button{background:#0a7c3b;color:white;border:none;padding:12px 20px;border-radius:5px;cursor:pointer;font-size:14px;width:100%}
+button:hover{background:#075c2b}
+button:active{transform:scale(0.98)}
+footer{background:#222;color:white;text-align:center;padding:20px;margin-top:0}
+.toast{position:fixed;bottom:30px;left:50%;transform:translateX(-50%) translateY(60px);background:#222;color:white;padding:12px 24px;border-radius:8px;font-size:14px;opacity:0;transition:all 0.3s;pointer-events:none;z-index:999}
+.toast.show{transform:translateX(-50%) translateY(0);opacity:1}
+</style>
+</head>
+<body>
+
+<header>
+  <h2>🏏 Cricket Gear Store</h2>
+  <nav>
+    <a href="#">Home</a>
+    <a href="#">Products</a>
+    <a href="#">Contact</a>
+  </nav>
+</header>
+
+<div class="cart-bar">
+  🛒 Cart: <span class="cart-count" id="cart-count">0</span>
+</div>
+
+<section class="hero">
+  <h1>Premium Cricket Equipment</h1>
+  <p>Everything a cricketer needs</p>
+</section>
+
+<section class="products">
+  <div class="product">
+    <img src="https://images.unsplash.com/photo-1593341646782-e0b495cff86d?w=400" alt="English Willow Bat">
+    <h3>English Willow Bat</h3>
+    <span class="price">₹4,999</span>
+    <button onclick="addToCart('English Willow Bat')">Add to Cart</button>
+  </div>
+  <div class="product">
+    <img src="https://images.unsplash.com/photo-1607083206173-31a3b5bb18ce?w=400" alt="Leather Cricket Ball">
+    <h3>Leather Cricket Ball</h3>
+    <span class="price">₹599</span>
+    <button onclick="addToCart('Leather Cricket Ball')">Add to Cart</button>
+  </div>
+  <div class="product">
+    <img src="https://images.unsplash.com/photo-1624555130581-1d9cca783bc0?w=400" alt="Batting Gloves">
+    <h3>Batting Gloves</h3>
+    <span class="price">₹1,299</span>
+    <button onclick="addToCart('Batting Gloves')">Add to Cart</button>
+  </div>
+  <div class="product">
+    <img src="https://images.unsplash.com/photo-1603575448364-cccd1a3798f6?w=400" alt="Cricket Pads">
+    <h3>Cricket Pads</h3>
+    <span class="price">₹1,899</span>
+    <button onclick="addToCart('Cricket Pads')">Add to Cart</button>
+  </div>
+  <div class="product">
+    <img src="https://images.unsplash.com/photo-1612872087720-bb876e2e67d1?w=400" alt="Helmet">
+    <h3>Helmet</h3>
+    <span class="price">₹2,499</span>
+    <button onclick="addToCart('Helmet')">Add to Cart</button>
+  </div>
+  <div class="product">
+    <img src="https://images.unsplash.com/photo-1624880357913-a8539238245b?w=400" alt="Cricket Kit Bag">
+    <h3>Cricket Kit Bag</h3>
+    <span class="price">₹2,199</span>
+    <button onclick="addToCart('Cricket Kit Bag')">Add to Cart</button>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 Cricket Gear Store | All Rights Reserved</p>
+</footer>
+
+<div class="toast" id="toast"></div>
+
+<script>
+let cart = 0;
+function addToCart(name) {
+  cart++;
+  document.getElementById('cart-count').textContent = cart;
+  const t = document.getElementById('toast');
+  t.textContent = name + ' added to cart!';
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2000);
+}
+</script>
+</body>
+</html>
